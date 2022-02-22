@@ -19,9 +19,9 @@ public class MediaTest {
     @Test
     public void validaReprovado(){
         Media media = new Media();
-        String resultado = media.calculaMedia(4.9,5.0);
+        String resultado = media.calculaMedia(4.99,5.0);
         assertEquals("Reprovado",resultado);
-
+        //teste commit
 
     }
 }
