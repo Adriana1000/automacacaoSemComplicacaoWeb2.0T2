@@ -1,22 +1,24 @@
 package br.com.chronosacademy.automacaoWeb;
 
+import br.com.chronosacademy.core.Driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TesteWeb {
-    ChromeDriver driver;
+    WebDriver driver;
+    Driver driverWeb;
 
     @Before
     public void inicializaTeste(){
-        WebDriverManager.chromedriver().setup();
-
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driverWeb = new Driver("chrome");
+        driver = driverWeb.getDriver();
         driver.get("https://chronosacademy.com.br");
 
 
@@ -29,7 +31,7 @@ public class TesteWeb {
 
        // String xpathTitulo = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
         String xpathTitulo = "//section[2]//h4";
-        WebElement txtTitulo = driver.findElementByXPath(xpathTitulo);
+        WebElement txtTitulo = driver.findElement(By.xpath(xpathTitulo));
         String titulo = txtTitulo.getText();
         Assert.assertEquals("Porque Tempo É Conhecimento", titulo);
 
