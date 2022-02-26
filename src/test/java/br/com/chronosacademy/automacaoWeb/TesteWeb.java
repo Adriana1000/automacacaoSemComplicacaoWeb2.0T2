@@ -29,15 +29,33 @@ public class TesteWeb {
     public void primeiroTeste() {
 
 
-       // String xpathTitulo = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
+        // String xpathTitulo = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
         String xpathTitulo = "//section[2]//h4";
         WebElement txtTitulo = driver.findElement(By.xpath(xpathTitulo));
         String titulo = txtTitulo.getText();
         Assert.assertEquals("Porque Tempo É Conhecimento", titulo);
 
+
     }
+
+    @Test
+    public void segundoTeste() {
+        String xpathBotao = "//div[3]//div[2]//a";
+        WebElement btnTitulo = driver.findElement(By.xpath(xpathBotao));
+        btnTitulo.click();
+
+        String xpathCursos= "//*[@id=\"block-214\"]/div/div/div/div[1]/div/div";
+        WebElement txtCursos = driver.findElement(By.xpath(xpathCursos));
+        String cursos = txtCursos.getText();
+        Assert.assertEquals("Conheça todos os nossos cursos",cursos);
+
+        }
+
+
     @After
-    public  void finalizaTeste(){
+    public void finalizaTeste() {
         driver.quit();
     }
 }
+
+
