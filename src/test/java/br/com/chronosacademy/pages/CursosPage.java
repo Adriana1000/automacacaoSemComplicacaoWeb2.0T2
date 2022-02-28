@@ -1,20 +1,24 @@
 package br.com.chronosacademy.pages;
 
+import br.com.chronosacademy.maps.CursoMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 public class CursosPage {
     WebDriver driver;
+    CursoMap cursoMap;
 
     public CursosPage(WebDriver driver) {
+
         this.driver = driver;
+        cursoMap = new CursoMap();
+        PageFactory.initElements(driver,cursoMap);
     }
 
     public String getCursos() {
-        String xpathCursos= "//*[@id=\"block-214\"]/div/div/div/div[1]/div/div";
-        WebElement txtCursos = driver.findElement(By.xpath(xpathCursos));
-        return txtCursos.getText();
+       return cursoMap.txtCursos.getText();
     }
 
 
